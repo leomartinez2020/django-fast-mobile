@@ -1,0 +1,8 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+    <h1>Pagado</h1>
+    <p>Pagado: {{ pago }}</p>
+    <p>Total: {{ pago.inmueble.costo }}</p>
+    <p>Saldo: {{ saldo }}</p>
+    <p>Última cuota: {{ cuota }}</p>
+{% endblock %}

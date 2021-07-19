@@ -1,0 +1,6 @@
+{% extends "payment/base.html" %}
+
+{% block content %}
+  <p>Logged out!</p>
+  <a href="{% url 'payment:index'%}">Click here to login again.</a>
+{% endblock %}

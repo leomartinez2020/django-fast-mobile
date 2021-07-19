@@ -1,0 +1,64 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+  <div class="welcome">
+    {% if user.is_authenticated %}
+    <h1>Hola {{ user.get_username }}</h1>
+    <p class="lead">Bienvenido a tu cuenta Django Mobile</p>
+    <p class="lead">Tu saldo: ${{ user.saldo }}</p>
+    <p class="lead">Sim Card: {{ user.sim_card }}</p>
+      {% if user.plan_set.all %}
+        <p class="lead">Tus planes:</p>
+        {% for plan in user.plan_set.all %}
+          <p>{{ plan }}</p>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+    <h2>El mejor plan siempre</h2>
+    <p class="lead">
+      Tenemos los planes más convenientes: prepago
+      con navegación, redes sociales, minutos y mensajes de texto incluidos.
+    </p>
+    {% endif %}
+  </div>
+  <div class="row">
+    {% for plan in planes %}
+    <div class="card col-sm" style="margin: 6px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ plan.nombre }}</h5>
+        <p class="card-text">{{ plan.duracion }} DÍAS</p>
+        <p class="card-text">$ {{ plan.costo }}</p>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLive{{plan.id}}" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">{{ plan.nombre }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Escogiste el plan {{ plan.nombre }}</p>
+                <p>Vigencia: {{ plan.duracion }} días</p>
+                <p>Costo: ${{ plan.costo }}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'payment:activar_plan' plan.id %}" type="button" class="btn btn-primary">Activar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="bd-example">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLive{{plan.id}}">
+            Comprar
+          </button>
+        </div>
+        {% endif %}
+        <!-- End Modal -->
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
