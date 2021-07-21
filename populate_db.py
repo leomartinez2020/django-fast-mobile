@@ -14,11 +14,14 @@ PEOPLE = [
     {'username': 'Ringo', 'password': 'beatles123', 'saldo': 10000, 'sim_card': '3203069805'},
 ]
 
-def populate():
+def populate_planes():
     for elem in PLANS:
         p = Plan(**elem)
         p.save()
-        print('done')
+        print('done plan')
+
+def populate_clients():
     for person in PEOPLE:
-        c = Cliente(**person)
+        c = Cliente.objects.create_user(**person)
         c.save()
+        print('done person')

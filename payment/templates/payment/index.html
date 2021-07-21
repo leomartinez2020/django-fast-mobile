@@ -1,25 +1,37 @@
 {% extends 'payment/base.html' %}
 {% block content %}
-  <div class="welcome">
+  <div class="welcome row">
     {% if user.is_authenticated %}
+    <div class="col-sm">
     <h1>Hola {{ user.get_username }}</h1>
     <p class="lead">Bienvenido a tu cuenta Django Mobile</p>
     <p class="lead">Tu saldo: ${{ user.saldo }}</p>
     <p class="lead">Sim Card: {{ user.sim_card }}</p>
-      {% if user.plan_set.all %}
+    </div>
+
+    <div class="col-sm">
+      {% if user.planes %}
+        {% if messages %}
+          {% for message in messages %}
+            <h3 class="message">{{ message }}</h3>
+          {% endfor %}
+        {% endif %}
         <p class="lead">Tus planes:</p>
-        {% for plan in user.plan_set.all %}
-          <p>{{ plan }}</p>
+        {% for plan, valor in user.planes.items %}
+          <p>{{ valor.nombre }} caduca el {{ valor.fecha_caduca }}</p>
         {% endfor %}
       {% endif %}
-    {% else %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="row">
     <h2>El mejor plan siempre</h2>
     <p class="lead">
       Tenemos los planes más convenientes: prepago
       con navegación, redes sociales, minutos y mensajes de texto incluidos.
     </p>
-    {% endif %}
   </div>
+
   <div class="row">
     {% for plan in planes %}
     <div class="card col-sm" style="margin: 6px;">
@@ -40,10 +52,17 @@
                 <p>Escogiste el plan {{ plan.nombre }}</p>
                 <p>Vigencia: {{ plan.duracion }} días</p>
                 <p>Costo: ${{ plan.costo }}</p>
+                {% if plan.costo > user.saldo %}
+                  <p>Saldo insuficiente. Debe recargar para comprar un plan</p>
+                {% endif %}
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a href="{% url 'payment:activar_plan' plan.id %}" type="button" class="btn btn-primary">Activar</a>
+                {% if plan.costo > user.saldo %}
+                  <button type="button" class="btn btn-primary" disabled>Activar</a>
+                {% else %}
+                  <a href="{% url 'payment:activar_plan' plan.id %}" type="button" class="btn btn-primary">Activar</a>
+                {% endif %}
               </div>
             </div>
           </div>
