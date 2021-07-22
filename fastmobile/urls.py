@@ -6,3 +6,5 @@ urlpatterns = [
     path('', include('payment.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+handler404 = 'payment.views.page_not_found'

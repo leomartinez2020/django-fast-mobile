@@ -7,6 +7,9 @@ from .models import Plan, Cliente
 
 from utils import agregar_plan, SaldoInsuficienteError
 
+def page_not_found(request, exception):
+    return render(request, 'payment/not_found.html')
+
 def index(request):
     planes = Plan.objects.all()
     return render(request, 'payment/index.html', {'planes': planes})
@@ -19,10 +22,8 @@ def activar_plan(request, plan_id):
         agregar_plan(cliente, plan)
         messages.success(request, 'Tu plan se actualizó con éxito!')
     except SaldoInsuficienteError:
-        print('oops')
         messages.error(request, 'Lo sentimos. Saldo insuficiente')
     #return HttpResponse(f'{request.user.id} - {plan.nombre}')
     #return HttpResponseRedirect(reverse('payment:index'))
     finally:
-        print('aqui finally')
         return redirect('payment:index')
