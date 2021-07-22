@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class SaldoInsuficienteError(Exception):
     pass
 
@@ -5,6 +7,8 @@ def agregar_plan(cliente, plan):
     if cliente.saldo < plan.costo:
         print('yerda, error desde util')
         raise SaldoInsuficienteError('something wrong happened')
+    plan.fecha = datetime.now()
+    plan.save()
     data = plan.get_fields()
     if cliente.planes is None:
         clave = 'p1'
