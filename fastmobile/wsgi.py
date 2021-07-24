@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'houserent.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fastmobile.settings')
 
 application = get_wsgi_application()

@@ -18,3 +18,8 @@ def agregar_plan(cliente, plan):
         cliente.planes[clave] = data
     cliente.saldo -= plan.costo
     cliente.save()
+
+def string_to_datetime(fecha):
+    'fecha to be of form: 07/26/2021, 09:26:19'
+    formato = '%m/%d/%Y, %H:%M:%S'
+    return datetime.strptime(fecha, formato)
