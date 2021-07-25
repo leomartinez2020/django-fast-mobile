@@ -3,7 +3,7 @@
   <div class="welcome row">
     {% if user.is_authenticated %}
     <div class="col-sm">
-    <h1>Hola {{ user.get_username }}</h1>
+    <h1 id="username">Hola {{ user.get_username }}</h1>
     <p class="lead">Bienvenido a tu cuenta Fast Mobile</p>
     <p class="lead">Tu saldo: ${{ user.saldo }}</p>
     <p class="lead">Sim Card: {{ user.sim_card }}</p>
