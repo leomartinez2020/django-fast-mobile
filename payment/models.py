@@ -22,6 +22,7 @@ class Plan(models.Model):
 
     def get_caducidad(self):
         delta = timedelta(days=self.duracion)
+        #delta = timedelta(seconds=120)
         fecha_caduca = self.fecha + delta
         return fecha_caduca.strftime('%m/%d/%Y, %H:%M:%S')
 

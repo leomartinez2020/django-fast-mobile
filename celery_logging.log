@@ -1,0 +1,3 @@
+2021-07-25 12:09:58,109 - celery_logging - INFO - {'costo': 6000.0, 'duracion': 5, 'fecha': '07/25/21', 'nombre': 'Internet 300MB', 'fecha_caduca': '07/25/2021, 12:09:58'} was deleted
+2021-07-25 12:13:31,393 - celery_logging - INFO - {'costo': 3000.0, 'duracion': 3, 'fecha': '07/25/21', 'nombre': 'Internet 60MB', 'fecha_caduca': '07/25/2021, 12:13:31'} was deleted
+2021-07-25 12:21:13,758 - celery_logging - INFO - {'costo': 2000.0, 'duracion': 2, 'fecha': '07/25/21', 'nombre': 'Llamadas 60 Min', 'fecha_caduca': '07/25/2021, 12:21:13'} was deleted from user 1
