@@ -1,0 +1,24 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+  <h1>This is the dashboard</h1>
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Unidades</th>
+      <th scope="col">Costo</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for clave, valor in data.items %}
+    <tr>
+      <th scope="row">{{clave}}</th>
+      <td>{{valor.contador}}</td>
+      <td>{{valor.costo}}</td>
+      <td>{{valor.total}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

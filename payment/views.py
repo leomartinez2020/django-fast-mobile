@@ -5,6 +5,7 @@ from django.contrib import messages
 
 from .models import Plan, Cliente
 
+from process import unpickle_data
 from utils import agregar_plan, SaldoInsuficienteError
 
 def page_not_found(request, exception):
@@ -27,3 +28,7 @@ def activar_plan(request, plan_id):
     #return HttpResponseRedirect(reverse('payment:index'))
     finally:
         return redirect('payment:index')
+
+def dashboard(request):
+    data = unpickle_data('mongodict.p')
+    return render(request, 'payment/dashboard.html', {'data': data})

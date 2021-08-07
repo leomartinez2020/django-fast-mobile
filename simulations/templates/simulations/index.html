@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: grey;
+        }
+        .container {
+            margin: 0 auto;
+            text-align: center;
+            width: 80%;
+        }
+    </style>
+    <title>Percolation</title>
+</head>
+<body>
+    <section class="container">
+        <h1>Percolation</h1>
+        <section class="buttons">
+            <button onclick="runSimulation()">Run Simulation</button>
+            <button onclick="resetPercolation()">Reset</button>
+        </section>
+        <div class="canvas">
+            <canvas id="percolation" width="600px" height="600px"></canvas>
+        </div>
+    </section>
+    <section class="container">
+        <h1>Langton's Ant</h1>
+        <section class="buttons">
+            <button onclick="runLangtonSim()">Run Simulation</button>
+            <button onclick="resetLangton()">Reset</button>
+        </section>
+        <div class="canvas">
+            <canvas id="langton" width="600px" height="600px"></canvas>
+        </div>
+    </section>
+    <section class="container">
+        <h1>Cellular Automata</h1>
+        <section>
+            <button onclick="runAutomataSim(30)">Rule 30</button>
+            <button onclick="runAutomataSim(90)">Rule 90</button>
+            <button onclick="runAutomataSim(54)">Rule 54</button>
+            <button onclick="runAutomataSim(190)">Rule 190</button>
+        </section>
+        <section>
+            <button onclick="runAutomataSim(60)">Rule 60</button>
+            <button onclick="runAutomataSim(150)">Rule 150</button>
+            <button onclick="runAutomataSim(158)">Rule 158</button>
+            <button onclick="runAutomataSim(182)">Rule 182</button>
+        </section>
+        <div class="canvas">
+            <canvas id="automata" width="600px" height="600px"></canvas>
+        </div>
+    </section>
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/percolation.js' %}"></script>
+    <script src="{% static 'js/langton.js' %}"></script>
+    <script src="{% static 'js/automata.js' %}"></script>
+</body>
+</html>

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['143.198.168.226', 'django.pyflaskapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'simulations.apps.SimulationsConfig',
     'payment.apps.PaymentConfig',
     'django.contrib.admin',
     'django.contrib.auth',

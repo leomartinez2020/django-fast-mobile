@@ -1,1 +1,7 @@
 __pycache__/
+env
+*.log
+tempfile
+populate_mongo.py
+process.py
+*.p
