@@ -5,3 +5,4 @@ tempfile
 populate_mongo.py
 process.py
 *.p
+myconfig/

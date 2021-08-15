@@ -5,14 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: grey;
+            font-family: 'Roboto', sans-serif;
         }
         .container {
             margin: 0 auto;
             text-align: center;
-            width: 80%;
+            width: 60%;
+        }
+        .container p {
+          font-size: 1.2em;
+        }
+        .info {
+          text-align: justify;
+        }
+        .quote {
+          border-left: 5px solid black;
+          font-size: medium;
+          font-style: italic;
+          padding-left: 8px;
+          text-align: justify;
         }
     </style>
     <title>Percolation</title>
@@ -20,6 +36,18 @@
 <body>
     <section class="container">
         <h1>Percolation</h1>
+        <p class="info">
+          Percolation is the process of a liquid passing through a medium that has empty spaces inside. In order to
+          simulate percolation we can use the Monte Carlo method in which there is initially a grid of blocked square
+          sites. As the simulation proceeds, blocked sites are opened and they get filled if they have contact with
+          the surface above. When a site at the bottom gets filled we say that the system percolates. A system
+          percolates when approximately 60% of the sites are open. Percolation is also known as a phase transition.
+          In the graphic above, there is a 20x20 grid of squared sites where the blue sites percolate, the white sites are empty, and the grey ones are blocked.
+        </p>
+        <p class="info">
+          Percolation is a case in algorithm theory of dynamic connectivity where the data structure keeps
+          information about the components that are connected. Connected components have the same root in a graph.
+        </p>
         <section class="buttons">
             <button onclick="runSimulation()">Run Simulation</button>
             <button onclick="resetPercolation()">Reset</button>
@@ -30,6 +58,16 @@
     </section>
     <section class="container">
         <h1>Langton's Ant</h1>
+        <p class="info">Langton's ant is a cellular automaton where the color of the cell changes depending on the ant's movement.
+           After more than 10'000 steps of chaotic movement, the ant describes a repetitive pattern.
+           According to Wikipedia:
+        </p>
+        <blockquote class="quote">
+          Langton's ant is a two-dimensional universal Turing machine with a very simple set of rules but complex
+          emergent behavior. It was invented by Chris Langton in 1986 and runs on a square lattice of black and white
+          cells. The universality of Langton's ant was proven in 2000. The idea has been generalized in several
+          different ways, such as turmites which add more colors and more states.
+        </blockquote>
         <section class="buttons">
             <button onclick="runLangtonSim()">Run Simulation</button>
             <button onclick="resetLangton()">Reset</button>
@@ -37,9 +75,16 @@
         <div class="canvas">
             <canvas id="langton" width="600px" height="600px"></canvas>
         </div>
-    </section>
+    </section> <!-- End Container -->
     <section class="container">
         <h1>Cellular Automata</h1>
+        <p class="info">
+          Stanisław Marcin Ulam was a polish nuclear physicist who discovered the Monte Carlo method and cellular 
+          automata, among other achievements. The idea of a cellular automaton came up from thinking about the
+          growth of crystals as self-replicating robots. A cellular automaton system consists of a grid of
+          cells that have certain mutable state. The cellular automaton showed here was mentioned by Stephen Wolfram
+          in his book <i>"A new Kind of Science"</i>.
+        </p>
         <section>
             <button onclick="runAutomataSim(30)">Rule 30</button>
             <button onclick="runAutomataSim(90)">Rule 90</button>
@@ -56,9 +101,24 @@
             <canvas id="automata" width="600px" height="600px"></canvas>
         </div>
     </section>
+    <section class="container">
+        <h1>Bubble Sort</h1>
+        <p class="info">
+            Bubble sort is a simple sorting algorithm that loops through the array, compares elements and
+            swaps them if they are in the wrong order.
+        </p>
+        <section class="buttons">
+            <button onclick="animateBubble()">Run Simulation</button>
+            <button onclick="resetBubble()">Reset</button>
+        </section>
+        <div class="canvas">
+            <canvas id="bubbleSort" width="400px" height="400px"></canvas>
+        </div>
+    </section> <!-- End Container -->
     <script src="{% static 'js/utils.js' %}"></script>
     <script src="{% static 'js/percolation.js' %}"></script>
     <script src="{% static 'js/langton.js' %}"></script>
     <script src="{% static 'js/automata.js' %}"></script>
+    <script src="{% static 'js/bubble.js' %}"></script>
 </body>
 </html>
