@@ -36,26 +36,23 @@ for (let j = 0; j < array.length; j++) {
 
 // Animation logic
 function sortLoop() {
+    let a = array[jk];
+    let b = array[jk + 1];
+    if (a.height > b.height) {
+        swap(array, jk, jk + 1);
+            redraw();
+            array[jk + 1].draw(jk + 1, 'red');
+    }
     if (ik < array.length) {
-        for (jk = 0; jk < array.length - ik - 1; jk++) {
-            if (array[jk].height > array[jk + 1].height) {
-                swap(array, jk, jk + 1);
-                redraw();
-                array[jk].draw(jk, 'red');
-                array[jk + 1].draw(jk + 1, 'red');
-            }
+        jk++;
+        if (jk >= array.length - ik - 1) {
+            jk = 0;
+            ik++;
         }
     } else {
-        while (jk >= 0) {
-            redraw();
-            array[jk].draw(jk, 'red');
-            jk -= 1;
-        }
         redraw();
         clearInterval(animVar);
     }
-    ik++;
-
 }
 
 function redraw() {
@@ -67,7 +64,7 @@ function redraw() {
 
 let animVar;
 function animateBubble() {
-    animVar = setInterval(sortLoop, 200);
+    animVar = setInterval(sortLoop, 50);
 }
 
 function resetBubble() {
