@@ -30,10 +30,20 @@
           padding-left: 8px;
           text-align: justify;
         }
+        #collisions {
+            border: 1px solid black;
+        }
+        hr {
+          width: 60%;
+        }
     </style>
     <title>Percolation</title>
 </head>
 <body>
+    <header class="container">
+      <h1>Algorithms and Simulations</h1>
+      <h2>All the simulations shown here were built using HTML canvas and vanilla Javascript</h2>
+    </header>
     <section class="container">
         <h1>Percolation</h1>
         <p class="info">
@@ -56,6 +66,7 @@
             <canvas id="percolation" width="600px" height="600px"></canvas>
         </div>
     </section>
+    <hr>
     <section class="container">
         <h1>Langton's Ant</h1>
         <p class="info">Langton's ant is a cellular automaton where the color of the cell changes depending on the ant's movement.
@@ -76,6 +87,7 @@
             <canvas id="langton" width="600px" height="600px"></canvas>
         </div>
     </section> <!-- End Container -->
+    <hr>
     <section class="container">
         <h1>Cellular Automata</h1>
         <p class="info">
@@ -101,6 +113,7 @@
             <canvas id="automata" width="600px" height="600px"></canvas>
         </div>
     </section>
+    <hr>
     <section class="container">
         <h1>Bubble Sort</h1>
         <p class="info">
@@ -116,10 +129,27 @@
             <canvas id="bubbleSort" width="400px" height="400px"></canvas>
         </div>
     </section> <!-- End Container -->
+    <hr>
+    <section class="container">
+        <h1>Number π calculated through colliding blocks</h1>
+        <p class="info">
+          When two blocks collide in a perfectly elastic collision as shown in the simulation,
+          turns out that if the mass ratio is 10<sup>-2n</sup> the number of collisions matches the
+          digits of the number pi.
+        </p>
+        <section class="buttons">
+            <button onclick="animateCollisions()">Run Simulation</button>
+            <button onclick="resetCollisions()">Reset</button>
+        </section>
+        <div class="canvas">
+            <canvas id="collisions" width="400px" height="400px"></canvas>
+        </div>
+    </section> <!-- End Container -->
     <script src="{% static 'js/utils.js' %}"></script>
     <script src="{% static 'js/percolation.js' %}"></script>
     <script src="{% static 'js/langton.js' %}"></script>
     <script src="{% static 'js/automata.js' %}"></script>
     <script src="{% static 'js/bubble.js' %}"></script>
+    <script src="{% static 'js/collisions.js' %}"></script>
 </body>
 </html>
